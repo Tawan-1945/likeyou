@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <title>มีอะไรจะบอก</title>
+    <style>
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-color: #ffe6e6;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .card {
+            background-color: #fff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            display: inline-block;
+            padding: 40px;
+        }
+        h1 {
+            color: #e6005c;
+        }
+        p {
+            font-size: 20px;
+            color: #333;
+        }
+        .heart {
+            color: red;
+            font-size: 40px;
+        }
+        button {
+            font-size: 18px;
+            margin: 10px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        .yes {
+            background-color: #4CAF50;
+            color: white;
+        }
+        .no {
+            background-color: #f44336;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>สวัสดี 😊</h1>
+        <p>พี่มีบางอย่างจะบอก...</p>
+        <p class="heart">❤️</p>
+        <p>พี่ชอบน้องนะ ถ้าไม่มีคนจองพี่ขอจีบได้มั้ย</p>
+        <button class="yes" onclick="submitAnswer('ได้')">ได้</button>
+        <button class="no" onclick="submitAnswer('ไม่ได้')">ไม่ได้</button>
+    </div>
+
+    <script>
+        function submitAnswer(answer) {
+            const scriptURL = "https://script.google.com/macros/s/AKfycbwB0cup5GKay0VYxUjGOpl6zHd3yRBraFj-B3SsMSzpEBsldrqr0QpYZllSwpjBzOg/exec"; // ใส่ URL ของคุณ
+            fetch(scriptURL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({ "answer": answer })
+            })
+            .then(response => alert("ส่งคำตอบแล้ว ขอบคุณนะ 😊"))
+            .catch(error => alert("เกิดข้อผิดพลาด กรุณาลองใหม่อีกครั้ง"));
+        }
+    </script>
+</body>
+</html>
